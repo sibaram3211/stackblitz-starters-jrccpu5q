@@ -1,10 +1,18 @@
 const express = require('express');
+const cors = require('cors');
 const { resolve } = require('path');
 
 const app = express();
 const port = 3010;
 
 app.use(express.static('static'));
+
+// ✅ Add this — allows all origins (fine for dev/demo)
+app.use(cors({
+  origin: '*',
+  methods: ['GET'],
+}));
+
 
 const DEADLINE = new Date('2026-12-31T23:59:59Z');
 
